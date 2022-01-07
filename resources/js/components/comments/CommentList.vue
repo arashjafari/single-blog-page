@@ -10,6 +10,7 @@
         components: {
             CommentItem,
         },
+        name: 'CommentList',
         props: {
             comments: {
                 type: Array,

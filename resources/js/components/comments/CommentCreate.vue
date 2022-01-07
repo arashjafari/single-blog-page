@@ -10,7 +10,7 @@
 
         <form @submit.prevent="saveComment" >
             <div> 
-                <input type="text" name="name" id="name" class="w-2/5 p-3 border" placeholder="Name" v-model="form.name"> 
+                <input type="text" name="name" id="name" class="w-2/5 px-3 py-2 border" placeholder="Name" v-model="form.name"> 
             </div>
             <div> 
                 <textarea name="body" id="body" cols="30" rows="3" class="my-3 w-full p-3 border" v-model="form.body" placeholder="Please leave a comment"></textarea> 
@@ -34,12 +34,14 @@
                 required: true
             }
         },
+        name: 'CommentCreate',
         setup(props) { 
  
             const form = reactive({
                 'name': '',
                 'body': '',
-                'post_id': props.postId
+                'post_id': props.postId,
+                'parent_id': props.parentId
             })
 
             const { errors, storeComment } = useComments()

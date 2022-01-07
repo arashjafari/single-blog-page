@@ -19452,11 +19452,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       required: true
     }
   },
+  name: 'CommentCreate',
   setup: function setup(props) {
     var form = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       'name': '',
       'body': '',
-      'post_id': props.postId
+      'post_id': props.postId,
+      'parent_id': props.parentId
     });
 
     var _useComments = (0,_composables_comments__WEBPACK_IMPORTED_MODULE_2__["default"])(),
@@ -19507,6 +19509,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'CommentItem',
   props: {
     comment: {
       type: Object,
@@ -19534,6 +19537,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     CommentItem: _CommentItem_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  name: 'CommentList',
   props: {
     comments: {
       type: Array,
@@ -19568,6 +19572,7 @@ __webpack_require__.r(__webpack_exports__);
     CommentList: _comments_CommentList_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     CommentCreate: _comments_CommentCreate_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  name: 'PostIndex',
   setup: function setup() {
     var _useComments = (0,_composables_comments__WEBPACK_IMPORTED_MODULE_2__["default"])(),
         comments = _useComments.comments,
@@ -19633,7 +19638,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "text",
     name: "name",
     id: "name",
-    "class": "w-2/5 p-3 border",
+    "class": "w-2/5 px-3 py-2 border",
     placeholder: "Name",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.form.name = $event;
@@ -19673,7 +19678,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "bg-white my-5 p-6"
+  "class": "bg-white my-2 p-6"
 };
 var _hoisted_2 = {
   "class": "font-bold"
@@ -19681,14 +19686,33 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "text-gray-500 text-sm"
 };
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "Reply")], -1
+/* HOISTED */
+);
+
+var _hoisted_5 = {
+  key: 0
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_comment_item = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("comment-item", true);
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comment.name), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comment.created_at), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comment.body), 1
   /* TEXT */
-  )]);
+  ), _hoisted_4, $props.comment.nested_children.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.comment.nested_children, function (comment) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_comment_item, {
+      key: comment.id,
+      comment: comment
+    }, null, 8
+    /* PROPS */
+    , ["comment"]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),
@@ -19840,8 +19864,9 @@ function useComments() {
             case 2:
               response = _context.sent;
               comments.value = response.data.comments;
+              console.log(comments.value);
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }

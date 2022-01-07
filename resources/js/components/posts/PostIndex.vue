@@ -32,6 +32,7 @@
             CommentList,
             CommentCreate
         },
+        name: 'PostIndex',
         setup() {
             const { comments, getComments } = useComments()
 
