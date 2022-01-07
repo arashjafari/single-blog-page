@@ -1,31 +1,42 @@
 <template>
-    <div class="bg-white p-6">
-        <div v-if="errors">
-            <div v-for="(v, k) in errors" :key="k" >
-                <p v-for="error in v" :key="error">
-                {{ error }}
-                </p>
+    <div class="bg-white py-6 px-24 fixed bottom-0 left-0 right-0 border-t border-gray-100">
+        <div class="w-3/4 my-0 mx-auto">
+            <div v-if="errors">
+                <div v-for="(v, k) in errors" :key="k" >
+                    <p v-for="error in v" :key="error">
+                    {{ error }}
+                    </p>
+                </div>
             </div>
+    
+            <form @submit.prevent="saveComment" >
+                <div class="flex flex-row gap-6 items-center"> 
+                    <input type="text" name="name" id="name" class="w-2/5 px-3 py-2 border m-0" placeholder="Name" v-model="form.name"> 
+
+                    <div v-if="parentId != null" class="flex flex-row items-center">
+                        <span class="leading-none">
+                            Replay to: 
+                        </span>
+
+                        <div class="flex gap-0 bg-green-600 items-stretch ml-1 text-white">
+                            <span class="leading-none p-2">{{ replyTo }}</span>
+                            <button class="m-0 px-2 leading-none bg-green-500 text-white" @click="parentId = null">
+                             x 
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="flex flex-row items-end mt-2"> 
+                    <textarea name="body" id="body" cols="30" rows="2" class="grow mr-5 p-3 border" v-model="form.body" placeholder="Please leave a comment"></textarea> 
+                    <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:red-blue-700 dark:focus:ring-red-800 flex-none">
+                        Post comment
+                    </button>
+                </div>
+                
+                
+            </form>
         </div>
- 
-        <form @submit.prevent="saveComment" >
-            <div> 
-                <input type="text" name="name" id="name" class="w-2/5 px-3 py-2 border" placeholder="Name" v-model="form.name"> 
-
-                <span v-if="parentId != null">
-                    replay to: <b>{{ replyTo }}</b>
-
-                    <button class="m-2 p-1 leading-none bg-red-400" @click="parentId = null"> x </button>
-                </span>
-            </div>
-            <div> 
-                <textarea name="body" id="body" cols="30" rows="3" class="my-3 w-full p-3 border" v-model="form.body" placeholder="Please leave a comment"></textarea> 
-            </div>
-            
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Post comment
-            </button>
-        </form>
     </div>
 </template>
 
