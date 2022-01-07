@@ -7,8 +7,7 @@ export default function useComments() {
 
     const getComments = async (post_id) => {
         let response = await axios.get(`/api/v1/comments/${post_id}`)
-        comments.value = response.data.comments;
-        console.log(comments.value);
+        comments.value = response.data.comments; 
     }
 
     const storeComment = async (data) => {

@@ -15,8 +15,8 @@
 
     <div class="w-4/6 my-7 mx-auto "> 
         <p class="font-bold text-xl">Comments</p>
-        <comment-list :comments="comments"></comment-list>
-        <comment-create :postId="1"></comment-create>
+        <comment-list  @replay="replay($event)" :comments="comments"></comment-list>
+        <comment-create :parentId="parentId" :replyTo="replyTo" :postId="1"></comment-create>
     </div>
 
 </template>
@@ -33,6 +33,18 @@
             CommentCreate
         },
         name: 'PostIndex',
+        data() {
+            return { 
+                parentId: null,
+                replyTo: null,
+            }
+        },
+        methods: {
+            replay(comment) {
+                this.parentId = comment.id;
+                this.replyTo = comment.name;
+            }
+        },
         setup() {
             const { comments, getComments } = useComments()
 

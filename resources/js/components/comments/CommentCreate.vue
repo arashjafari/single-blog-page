@@ -7,10 +7,16 @@
                 </p>
             </div>
         </div>
-
+ 
         <form @submit.prevent="saveComment" >
             <div> 
                 <input type="text" name="name" id="name" class="w-2/5 px-3 py-2 border" placeholder="Name" v-model="form.name"> 
+
+                <span v-if="parentId != null">
+                    replay to: <b>{{ replyTo }}</b>
+
+                    <button class="m-2 p-1 leading-none bg-red-400" @click="parentId = null"> x </button>
+                </span>
             </div>
             <div> 
                 <textarea name="body" id="body" cols="30" rows="3" class="my-3 w-full p-3 border" v-model="form.body" placeholder="Please leave a comment"></textarea> 
@@ -32,21 +38,30 @@
             postId: {
                 type: Number,
                 required: true
-            }
+            },
+            parentId: {
+                type: Number,
+                default: null
+            },
+            replyTo: {
+                type: String,
+                default: null
+            },
         },
         name: 'CommentCreate',
         setup(props) { 
- 
+             
             const form = reactive({
                 'name': '',
                 'body': '',
                 'post_id': props.postId,
-                'parent_id': props.parentId
+                'parent_id': null,
             })
 
             const { errors, storeComment } = useComments()
 
             const saveComment = async () => {
+                form.parent_id = props.parentId;   
                 await storeComment({...form});
             }
 

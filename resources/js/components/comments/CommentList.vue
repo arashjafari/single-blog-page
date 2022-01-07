@@ -1,6 +1,6 @@
 <template>
     <div>
-        <comment-item v-for="comment in comments" :key="comment.id" :comment="comment"></comment-item>
+        <comment-item @replay="replay($event)" v-for="comment in comments" :key="comment.id" :comment="comment"></comment-item>
     </div>
 </template>
 
@@ -15,6 +15,11 @@
             comments: {
                 type: Array,
                 required: true,
+            },
+        },
+        methods: {
+            replay(comment) { 
+                this.$emit('replay', comment);
             },
         },
     }

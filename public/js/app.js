@@ -19450,6 +19450,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     postId: {
       type: Number,
       required: true
+    },
+    parentId: {
+      type: Number,
+      "default": null
+    },
+    replyTo: {
+      type: String,
+      "default": null
     }
   },
   name: 'CommentCreate',
@@ -19458,7 +19466,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       'name': '',
       'body': '',
       'post_id': props.postId,
-      'parent_id': props.parentId
+      'parent_id': null
     });
 
     var _useComments = (0,_composables_comments__WEBPACK_IMPORTED_MODULE_2__["default"])(),
@@ -19471,10 +19479,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                form.parent_id = props.parentId;
+                _context.next = 3;
                 return storeComment(_objectSpread({}, form));
 
-              case 2:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -19515,6 +19524,11 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       required: true
     }
+  },
+  methods: {
+    replay: function replay(comment) {
+      this.$emit('replay', comment);
+    }
   }
 });
 
@@ -19542,6 +19556,11 @@ __webpack_require__.r(__webpack_exports__);
     comments: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    replay: function replay(comment) {
+      this.$emit('replay', comment);
     }
   }
 });
@@ -19573,6 +19592,18 @@ __webpack_require__.r(__webpack_exports__);
     CommentCreate: _comments_CommentCreate_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   name: 'PostIndex',
+  data: function data() {
+    return {
+      parentId: null,
+      replyTo: null
+    };
+  },
+  methods: {
+    replay: function replay(comment) {
+      this.parentId = comment.id;
+      this.replyTo = comment.name;
+    }
+  },
   setup: function setup() {
     var _useComments = (0,_composables_comments__WEBPACK_IMPORTED_MODULE_2__["default"])(),
         comments = _useComments.comments,
@@ -19607,8 +19638,13 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   key: 0
 };
+var _hoisted_3 = {
+  key: 0
+};
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" replay to: ");
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
   "class": "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 }, " Post comment ", -1
@@ -19631,7 +19667,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128
   /* KEYED_FRAGMENT */
   ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $setup.saveComment && $setup.saveComment.apply($setup, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -19645,19 +19681,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.name]]), $props.parentId != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.replyTo), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "m-2 p-1 leading-none bg-red-400",
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $props.parentId = null;
+    })
+  }, " x ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     name: "body",
     id: "body",
     cols: "30",
     rows: "3",
     "class": "my-3 w-full p-3 border",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.form.body = $event;
     }),
     placeholder: "Please leave a comment"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.body]])]), _hoisted_3], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.body]])]), _hoisted_5], 32
   /* HYDRATE_EVENTS */
   )]);
 }
@@ -19686,12 +19729,7 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "text-gray-500 text-sm"
 };
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "Reply")], -1
-/* HOISTED */
-);
-
-var _hoisted_5 = {
+var _hoisted_4 = {
   key: 0
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -19703,8 +19741,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comment.body), 1
   /* TEXT */
-  ), _hoisted_4, $props.comment.nested_children.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.comment.nested_children, function (comment) {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.replay($props.comment);
+    })
+  }, "Reply")]), $props.comment.nested_children.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.comment.nested_children, function (comment) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_comment_item, {
+      onReplay: _cache[1] || (_cache[1] = function ($event) {
+        return $options.replay($event);
+      }),
       key: comment.id,
       comment: comment
     }, null, 8
@@ -19735,6 +19780,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.comments, function (comment) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_comment_item, {
+      onReplay: _cache[0] || (_cache[0] = function ($event) {
+        return $options.replay($event);
+      }),
       key: comment.id,
       comment: comment
     }, null, 8
@@ -19783,12 +19831,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_comment_create = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("comment-create");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_comment_list, {
+    onReplay: _cache[0] || (_cache[0] = function ($event) {
+      return $options.replay($event);
+    }),
     comments: $setup.comments
   }, null, 8
   /* PROPS */
   , ["comments"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_comment_create, {
+    parentId: $data.parentId,
+    replyTo: $data.replyTo,
     postId: 1
-  })])], 64
+  }, null, 8
+  /* PROPS */
+  , ["parentId", "replyTo"])])], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -19864,9 +19919,8 @@ function useComments() {
             case 2:
               response = _context.sent;
               comments.value = response.data.comments;
-              console.log(comments.value);
 
-            case 5:
+            case 4:
             case "end":
               return _context.stop();
           }
