@@ -19508,6 +19508,9 @@ var _useComments = (0,_composables_comments__WEBPACK_IMPORTED_MODULE_3__["defaul
     },
     showCreateComment: function showCreateComment() {
       this.activeCreateComment = true;
+    },
+    hideCreateComment: function hideCreateComment() {
+      this.activeCreateComment = false;
     }
   },
   setup: function setup() {
@@ -19571,6 +19574,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   name: 'CommentCreate',
+  methods: {
+    hideCreateComment: function hideCreateComment() {
+      this.$emit('hideCreateComment');
+    }
+  },
   setup: function setup(props, _ref) {
     var emit = _ref.emit;
     var form = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
@@ -19783,6 +19791,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["comments"]), $data.activeCreateComment ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_comment_create, {
     key: 0,
+    onHideCreateComment: $options.hideCreateComment,
     parentId: $data.parentId,
     replyTo: $data.replyTo,
     onReloadComments: _cache[1] || (_cache[1] = function ($event) {
@@ -19791,7 +19800,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     postId: 1
   }, null, 8
   /* PROPS */
-  , ["parentId", "replyTo"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
+  , ["onHideCreateComment", "parentId", "replyTo"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
 }
 
 /***/ }),
@@ -19839,10 +19848,13 @@ var _hoisted_8 = {
   "class": "leading-none p-2"
 };
 var _hoisted_9 = {
+  "class": "grow text-right"
+};
+var _hoisted_10 = {
   "class": "flex flex-row items-end mt-2"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Post comment ");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Post comment ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_custom_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("custom-button");
@@ -19862,7 +19874,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128
   /* KEYED_FRAGMENT */
   ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $setup.saveComment && $setup.saveComment.apply($setup, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -19880,17 +19892,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.name]]), $props.parentId != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.replyTo), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "m-0 px-2 leading-none bg-green-500 text-white",
+    "class": "m-0 px-2 leading-none bg-green-500 text-white uppercase",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $props.parentId = null;
     })
-  }, " x ")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  }, " x ")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[2] || (_cache[2] = function () {
+      return $options.hideCreateComment && $options.hideCreateComment.apply($options, arguments);
+    })
+  }, "X")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     name: "body",
     id: "body",
     cols: "30",
     rows: "2",
     "class": "grow mr-5 p-3 border",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $setup.form.body = $event;
     }),
     placeholder: "Please leave a comment",
@@ -19903,7 +19919,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "flex-none"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_10];
+      return [_hoisted_11];
     }),
     _: 1
     /* STABLE */

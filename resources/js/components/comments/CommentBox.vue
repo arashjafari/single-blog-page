@@ -9,7 +9,7 @@
                 </custom-button>
             </div>
             <comment-list  @replay="replay($event)" :comments="comments"></comment-list>
-            <comment-create v-if="activeCreateComment" :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="1"></comment-create>
+            <comment-create v-if="activeCreateComment" @hideCreateComment="hideCreateComment" :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="1"></comment-create>
         </div>
     </div>
 
@@ -52,6 +52,9 @@
             showCreateComment() {
                 this.activeCreateComment = true
             },
+            hideCreateComment() {
+                this.activeCreateComment = false
+            }, 
         },
         setup() { 
             onMounted(getComments(1)) // get comments for post 1

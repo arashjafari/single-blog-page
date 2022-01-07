@@ -810,6 +810,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-center {
   text-align: center;
 }
+.text-right {
+  text-align: right;
+}
 .text-justify {
   text-align: justify;
 }
@@ -851,6 +854,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .font-medium {
   font-weight: 500;
+}
+.uppercase {
+  text-transform: uppercase;
 }
 .leading-7 {
   line-height: 1.75rem;

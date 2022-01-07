@@ -20,11 +20,14 @@
 
                         <div class="flex gap-0 bg-green-600 items-stretch ml-1 text-white">
                             <span class="leading-none p-2">{{ replyTo }}</span>
-                            <button class="m-0 px-2 leading-none bg-green-500 text-white" @click="parentId = null">
-                             x 
+                            <button class="m-0 px-2 leading-none bg-green-500 text-white uppercase" @click="parentId = null">
+                             x
                             </button>
                         </div>
-
+                    </div>
+                    
+                    <div class="grow text-right">
+                        <button @click="hideCreateComment">X</button>
                     </div>
                 </div>
                 <div class="flex flex-row items-end mt-2"> 
@@ -64,8 +67,13 @@
                 type: String,
                 default: null
             },
-        },
+        }, 
         name: 'CommentCreate', 
+        methods: {
+            hideCreateComment() {
+                this.$emit('hideCreateComment')
+            },
+        },
         setup(props, { emit }) {  
             
             const form = reactive({
