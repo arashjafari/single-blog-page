@@ -17,11 +17,21 @@
 
 <body class="bg-gray-100">
 
-    <header class="text-center p-7">
-        <h2 class="font-extrabold text-3xl text-gray-800 leading-tight">
-            {{ $header ?? '' }}
-        </h2>
-    </header>
+
+    <div class="w-3/4 mx-auto my-0 shadow-xl">
+        <div class="h-52 relative bg-neutral-400">
+
+            <h2 class="font-bold text-3xl leading-tight absolute ml-12 top-2/4">
+                {{ $header ?? '' }}
+            </h2>
+        </div>
+
+        <div class="bg-white">
+            <div class="px-24 py-6 text-justify">
+                {{ $content ?? '' }}
+            </div>
+        </div>
+    </div>
 
     <div id="app">
         {{ $slot }}

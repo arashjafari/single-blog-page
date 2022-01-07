@@ -8,10 +8,10 @@ window.Vue = require('vue').default;
 
 import { createApp } from "vue";
 import router from './router'
-import PostIndex from './components/posts/PostIndex'
+import CommentBox from './components/comments/CommentBox'
 
 createApp({
     components: {
-        PostIndex
+        CommentBox
     }
 }).use(router).mount('#app')

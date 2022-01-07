@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white my-2 p-6">
+    <div class="mt-12">
         <p class="font-bold">{{ comment.name }}</p>
         <p class="text-gray-500 text-sm">{{ comment.created_at }}</p> 
         <p>{{ comment.body }}</p> 

@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import PostIndex from '../components/posts/PostIndex' 
+import CommentBox from '../components/comments/CommentBox' 
 
 const routes = [
     {
         path: '/',
-        name: 'post.index',
-        component: PostIndex
+        name: 'CommentBox',
+        component: CommentBox
     }
 ]
 
