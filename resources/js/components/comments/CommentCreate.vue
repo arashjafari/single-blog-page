@@ -11,7 +11,7 @@
     
             <form @submit.prevent="saveComment" >
                 <div class="flex flex-row gap-6 items-center"> 
-                    <input type="text" name="name" id="name" class="w-2/5 px-3 py-2 border m-0" placeholder="Name" v-model="form.name"> 
+                    <input type="text" name="name" id="name" class="w-2/5 px-3 py-2 border m-0" placeholder="Name" v-model="form.name" required> 
 
                     <div v-if="parentId != null" class="flex flex-row items-center">
                         <span class="leading-none">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="flex flex-row items-end mt-2"> 
-                    <textarea name="body" id="body" cols="30" rows="2" class="grow mr-5 p-3 border" v-model="form.body" placeholder="Please leave a comment"></textarea> 
+                    <textarea name="body" id="body" cols="30" rows="2" class="grow mr-5 p-3 border" v-model="form.body" placeholder="Please leave a comment" required></textarea> 
                     <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:red-blue-700 dark:focus:ring-red-800 flex-none">
                         Post comment
                     </button>
