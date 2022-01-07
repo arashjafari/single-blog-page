@@ -15,7 +15,14 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body>
+<body class="bg-gray-100">
+
+    <header class="text-center p-7">
+        <h2 class="font-extrabold text-3xl text-gray-800 leading-tight">
+            {{ $header ?? '' }}
+        </h2>
+    </header>
+
     <div id="app">
         {{ $slot }}
     </div>

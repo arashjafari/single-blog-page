@@ -1,9 +1,8 @@
 <template>
-    <div>
-        <span>{{ comment.name }}</span>
+    <div class="bg-white my-5 p-6">
+        <p class="font-bold">{{ comment.name }}</p>
+        <p class="text-gray-500 text-sm">{{ comment.created_at }}</p> 
         <p>{{ comment.body }}</p>
-        <span>{{ comment.created_at }}</span>
-        <hr>
     </div>
 </template>
 
