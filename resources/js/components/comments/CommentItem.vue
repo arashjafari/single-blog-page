@@ -24,7 +24,7 @@
         },
         methods: {
             replay(comment) {
-                this.$emit('replay', comment);
+                this.$emit('replay', comment)
             },
         },
     }

@@ -16,7 +16,7 @@
     <div class="w-4/6 my-7 mx-auto "> 
         <p class="font-bold text-xl">Comments</p>
         <comment-list  @replay="replay($event)" :comments="comments"></comment-list>
-        <comment-create :parentId="parentId" :replyTo="replyTo" :postId="1"></comment-create>
+        <comment-create :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="1"></comment-create>
     </div>
 
 </template>
@@ -26,6 +26,7 @@
     import CommentCreate from '../comments/CommentCreate.vue';
     import useComments from "../../composables/comments";
     import { onMounted } from "vue"; 
+    const { comments, getComments } = useComments()
   
     export default {
         components: {
@@ -41,13 +42,16 @@
         },
         methods: {
             replay(comment) {
-                this.parentId = comment.id;
-                this.replyTo = comment.name;
-            }
+                this.parentId = comment.id
+                this.replyTo = comment.name
+            },
+            reloadComments() { 
+                getComments(1)
+                this.parentId = null
+                this.replyTo = null
+            },
         },
-        setup() {
-            const { comments, getComments } = useComments()
-
+        setup() { 
             onMounted(getComments(1)) // get comments for post 1
  
             return {

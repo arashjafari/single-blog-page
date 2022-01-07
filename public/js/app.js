@@ -19461,7 +19461,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   name: 'CommentCreate',
-  setup: function setup(props) {
+  setup: function setup(props, _ref) {
+    var emit = _ref.emit;
     var form = (0,vue__WEBPACK_IMPORTED_MODULE_1__.reactive)({
       'name': '',
       'body': '',
@@ -19473,8 +19474,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         errors = _useComments.errors,
         storeComment = _useComments.storeComment;
 
+    var clearForm = function clearForm() {
+      form.name = '';
+      form.body = '';
+      form.parent_id = null;
+    };
+
     var saveComment = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -19484,6 +19491,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return storeComment(_objectSpread({}, form));
 
               case 3:
+                clearForm();
+                emit('reloadComments');
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -19492,7 +19503,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }));
 
       return function saveComment() {
-        return _ref.apply(this, arguments);
+        return _ref2.apply(this, arguments);
       };
     }();
 
@@ -19586,6 +19597,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var _useComments = (0,_composables_comments__WEBPACK_IMPORTED_MODULE_2__["default"])(),
+    comments = _useComments.comments,
+    getComments = _useComments.getComments;
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     CommentList: _comments_CommentList_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -19602,13 +19618,14 @@ __webpack_require__.r(__webpack_exports__);
     replay: function replay(comment) {
       this.parentId = comment.id;
       this.replyTo = comment.name;
+    },
+    reloadComments: function reloadComments() {
+      getComments(1);
+      this.parentId = null;
+      this.replyTo = null;
     }
   },
   setup: function setup() {
-    var _useComments = (0,_composables_comments__WEBPACK_IMPORTED_MODULE_2__["default"])(),
-        comments = _useComments.comments,
-        getComments = _useComments.getComments;
-
     (0,vue__WEBPACK_IMPORTED_MODULE_3__.onMounted)(getComments(1)); // get comments for post 1
 
     return {
@@ -19840,6 +19857,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["comments"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_comment_create, {
     parentId: $data.parentId,
     replyTo: $data.replyTo,
+    onReloadComments: _cache[1] || (_cache[1] = function ($event) {
+      return $options.reloadComments();
+    }),
     postId: 1
   }, null, 8
   /* PROPS */

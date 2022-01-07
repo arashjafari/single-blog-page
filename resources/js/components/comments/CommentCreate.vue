@@ -48,9 +48,9 @@
                 default: null
             },
         },
-        name: 'CommentCreate',
-        setup(props) { 
-             
+        name: 'CommentCreate', 
+        setup(props, { emit }) {  
+            
             const form = reactive({
                 'name': '',
                 'body': '',
@@ -60,9 +60,19 @@
 
             const { errors, storeComment } = useComments()
 
+            const clearForm = () => {
+                form.name = ''
+                form.body = ''
+                form.parent_id = null
+            }
+ 
             const saveComment = async () => {
-                form.parent_id = props.parentId;   
-                await storeComment({...form});
+                form.parent_id = props.parentId
+                await storeComment({...form})
+
+                clearForm();
+                
+                emit('reloadComments')
             }
 
             return {
