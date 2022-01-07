@@ -1,6 +1,6 @@
 <template>
     <div>
-        <comment-item @replay="replay($event)" v-for="comment in comments" :key="comment.id" :comment="comment"></comment-item>
+        <comment-item @replay="replay($event)" v-for="comment in comments" :level="1" :key="comment.id" :comment="comment"></comment-item>
     </div>
 </template>
 
