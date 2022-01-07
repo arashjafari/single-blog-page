@@ -20,7 +20,7 @@ class CommentController extends Controller
     
     public function store(CommentRequest $request)
     {
-        Comment::create([$request->validated()]);
+        Comment::create($request->validated());
 
         return response()->json(['message' => 'Comment created successfully'], 201);
     }
