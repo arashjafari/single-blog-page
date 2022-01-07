@@ -4,17 +4,20 @@
         Post Component
 
         <comment-list :comments="comments"></comment-list>
+        <comment-create :postId="1"></comment-create>
     </div>
 </template>
 
 <script> 
     import CommentList from '../comments/CommentList.vue';
+    import CommentCreate from '../comments/CommentCreate.vue';
     import useComments from "../../composables/comments";
-    import { onMounted } from "vue";
+    import { onMounted } from "vue"; 
   
     export default {
         components: {
-            CommentList
+            CommentList,
+            CommentCreate
         },
         setup() {
             const { comments, getComments } = useComments()
