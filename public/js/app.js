@@ -19720,11 +19720,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function () {
       return $props.onClick && $props.onClick.apply($props, arguments);
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 text-center", {
-      'text-white bg-red-700 hover:bg-red-800 focus:ring-red-300': $props.color === '' || $props.color === 'red',
-      'text-white bg-green-700 hover:bg-green-800 focus:ring-green-300': $props.color === 'green',
-      'text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300': $props.color === 'blue',
-      'text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-yellow-300': $props.color === 'yellow',
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["focus:ring-1 font-medium rounded-lg text-sm px-5 py-2.5 text-center", {
+      'text-white bg-red-700 hover:bg-red-800 focus:ring-red-600': $props.color === '' || $props.color === 'red',
+      'text-white bg-green-700 hover:bg-green-800 focus:ring-green-600': $props.color === 'green',
+      'text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-600': $props.color === 'blue',
+      'text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-yellow-600': $props.color === 'yellow',
       className: $props.className
     }])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")], 10
