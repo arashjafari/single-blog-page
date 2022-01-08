@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/{any}', 'blog')
+Route::view('/{any}', 'app')
     ->where('any', '.*');
