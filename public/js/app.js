@@ -19613,10 +19613,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return storeComment(_objectSpread({}, form));
 
               case 3:
-                clearForm();
-                emit('reloadComments');
+                if (errors.value == '') {
+                  clearForm();
+                  emit('reloadComments');
+                }
 
-              case 5:
+              case 4:
               case "end":
                 return _context.stop();
             }

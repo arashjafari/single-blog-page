@@ -95,9 +95,10 @@
                 form.parent_id = props.parentId
                 await storeComment({...form})
 
-                clearForm();
-                
-                emit('reloadComments')
+                if(errors.value == '') {
+                    clearForm()
+                    emit('reloadComments')
+                }  
             }
 
             return {
