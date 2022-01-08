@@ -20,14 +20,14 @@
 
                         <div class="flex gap-0 bg-green-600 items-stretch ml-1 text-white">
                             <span class="leading-none p-2 text-xs md:text-sm">{{ replyTo }}</span>
-                            <button class="m-0 px-2 leading-none bg-green-500 text-white uppercase" @click="parentId = null">
+                            <button class="m-0 px-2 leading-none bg-green-500 hover:bg-green-700 text-white uppercase font-mono" @click="parentId = null">
                              x
                             </button>
                         </div>
                     </div>
                     
                     <div class="grow text-right">
-                        <button @click="hideCreateComment" class="ml-2 md:ml-0">X</button>
+                        <button @click="hideCreateComment" class="ml-2 md:ml-0 text-gray-700 hover:text-gray-900 font-mono">X</button>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row items-end mt-2"> 
