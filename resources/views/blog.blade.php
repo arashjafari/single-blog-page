@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ __('My Bolg') }}
+        {{ __('Awesome blog') }}
     </x-slot>
     <x-slot name="content">
         <h2 class="font-bold text-xl">What is Lorem Ipsum?</h2>
