@@ -15,7 +15,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 font-serif">
 
     <div class="h-40 md:h-80 max-w-screen-2xl overflow-hidden">
         <div class="header-bg bottom-0 top-0 opacity-50 h-40 md:h-80 -z-10 fixed -left-2/4 -right-2/4 ease-in-out">
@@ -32,7 +32,7 @@
         <div class="w-11/12 md:w-3/4 mx-auto my-0 shadow-xl">
             <div class="h-40 md:h-52 relative bg-teal-600">
 
-                <h2 class="font-bold text-3xl leading-tight absolute ml-12 top-2/4 text-gray-800">
+                <h2 class="font-bold text-3xl leading-tight absolute ml-12 top-2/4 text-gray-800 uppercase">
                     {{ $header ?? '' }}
                 </h2>
             </div>
