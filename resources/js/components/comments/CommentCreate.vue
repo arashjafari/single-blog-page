@@ -20,7 +20,7 @@
 
                         <div class="flex gap-0 bg-green-600 items-stretch ml-1 text-white">
                             <span class="leading-none p-2 text-xs md:text-sm">{{ replyTo }}</span>
-                            <button class="m-0 px-2 leading-none bg-green-500 hover:bg-green-700 text-white uppercase font-mono" @click="parentId = null">
+                            <button class="m-0 px-2 leading-none bg-green-500 hover:bg-green-700 text-white uppercase font-mono transition duration-300 ease-in-out" @click="parentId = null">
                              x
                             </button>
                         </div>

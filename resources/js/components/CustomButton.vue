@@ -2,7 +2,7 @@
     <button 
         :type="type" 
         @click="onClick" 
-        class="focus:ring-1 font-medium rounded-lg text-sm px-5 py-2.5 text-center tracking-wider"
+        class="focus:ring-1 font-medium rounded-lg text-sm px-5 py-2.5 text-center tracking-wider transition duration-300 ease-in-out"
         :class="{
             'text-white bg-red-700 hover:bg-red-800 focus:ring-red-600': (color === '' || color === 'red'),
             'text-white bg-green-700 hover:bg-green-800 focus:ring-green-600': ( color === 'green'),
