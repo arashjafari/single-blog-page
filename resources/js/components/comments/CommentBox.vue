@@ -12,12 +12,16 @@
                 </custom-button>
             </div>
 
-            <div v-if="loading" class="flex items-center justify-center ">
+            <div v-if="loading && comments.length !== 0" class="flex items-center justify-center ">
                 <div class="w-8 h-8 border-b-2 border-gray-900 rounded-full animate-spin"></div>
             </div>
  
             <alert v-if="!loading && comments.length === 0" message="No comments yet"></alert>
-  
+
+            <div v-if="loading && comments.length === 0">
+                <preview-animation v-for="n in 3" v-bind:key="n"></preview-animation>     
+            </div>    
+ 
             <comment-list  @replay="replay($event)" :comments="comments"></comment-list>
             <comment-create v-if="activeCreateComment" @hideCreateComment="hideCreateComment" :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="postId"></comment-create>
         </div>
@@ -29,6 +33,7 @@
     import { onMounted } from 'vue' 
     import CommentCreate from '../comments/CommentCreate'
     import CommentList from '../comments/CommentList'
+    import PreviewAnimation from '../comments/PreviewAnimation'
     import CustomButton from '../CustomButton'
     import Error from '../messages/Error'
     import Alert from '../messages/Alert'
@@ -42,7 +47,8 @@
             CommentCreate,
             CustomButton,
             Error,
-            Alert
+            Alert,
+            PreviewAnimation,
         },
         name: 'PostIndex',
         props: {
