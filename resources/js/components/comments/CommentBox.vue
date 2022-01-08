@@ -8,6 +8,11 @@
                     Leave a comment
                 </custom-button>
             </div>
+
+            <div v-if="loading" class="flex items-center justify-center ">
+                <div class="w-8 h-8 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+            </div>
+             
             <comment-list  @replay="replay($event)" :comments="comments"></comment-list>
             <comment-create v-if="activeCreateComment" @hideCreateComment="hideCreateComment" :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="1"></comment-create>
         </div>
@@ -22,7 +27,7 @@
     import useComments from "../../composables/comments"
     import { onMounted } from "vue"
 
-    const { comments, getComments } = useComments()
+    const { comments, getComments, loading } = useComments()
   
     export default {
         components: {
@@ -65,7 +70,8 @@
             onMounted(getComments(1)) // get comments for post 1
  
             return {
-                comments
+                comments,
+                loading
             }
         } 
     }
