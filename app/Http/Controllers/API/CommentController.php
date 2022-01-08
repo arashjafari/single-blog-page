@@ -12,7 +12,7 @@ class CommentController extends Controller
     public function index($postId)
     {
         return response()->json([
-            'comments' => Comment::wherePostId($postId)->whereNull('parent_id')->with('nestedChildren')->get()->toArray(),
+            'comments' => Comment::wherePostId($postId)->whereNull('parent_id')->with('nestedChildren')->latest()->get()->toArray(),
         ]);
     }
     

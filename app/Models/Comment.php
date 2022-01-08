@@ -34,7 +34,7 @@ class Comment extends Model
 
     public function nestedChildren()
     {
-        return $this->children()->with('nestedChildren');
+        return $this->children()->with('nestedChildren')->latest();
     }
 
     public function getCreatedAtAttribute($value)
