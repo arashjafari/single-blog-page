@@ -2,10 +2,8 @@
     
     <div class="w-full md:w-3/4 my-7 mx-auto "> 
     
-        <div v-if="error500" class="flex items-center justify-center bg-red-600 text-white">
-            <p class="p-2">Something went wrong!</p>
-        </div>
-
+        <error v-if="error500" message="Something went wrong!"></error>
+ 
         <div class="px-6 md:px-24 py-6 text-justify"> 
             <p class="font-bold text-xl">Comments</p>
             <div>
@@ -18,9 +16,9 @@
                 <div class="w-8 h-8 border-b-2 border-gray-900 rounded-full animate-spin"></div>
             </div>
  
-            <div v-if="!loading && comments.length === 0" class="flex items-center justify-center">
-                <p class="text-gray-600 text-center">No comments yet</p>
-            </div>
+            <alert v-if="!loading && comments.length === 0" message="No comments yet"></alert>
+
+            
              
             <comment-list  @replay="replay($event)" :comments="comments"></comment-list>
             <comment-create v-if="activeCreateComment" @hideCreateComment="hideCreateComment" :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="postId"></comment-create>
@@ -30,11 +28,13 @@
 </template>
 
 <script> 
-    import CommentList from '../comments/CommentList.vue'
-    import CommentCreate from '../comments/CommentCreate.vue'
-    import CustomButton from '../CustomButton.vue'
+    import CommentList from '../comments/CommentList'
+    import CommentCreate from '../comments/CommentCreate'
+    import Error from '../messages/Error'
+    import Alert from '../messages/Alert'
+    import CustomButton from '../CustomButton'
     import useComments from "../../composables/comments"
-    import { onMounted } from "vue"
+    import { onMounted } from "vue" 
 
     const { comments, getComments, loading, error500 } = useComments()
   
@@ -42,7 +42,9 @@
         components: {
             CommentList,
             CommentCreate,
-            CustomButton
+            CustomButton,
+            Error,
+            Alert
         },
         name: 'PostIndex',
         props: {
