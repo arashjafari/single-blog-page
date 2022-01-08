@@ -28,13 +28,13 @@
 </template>
 
 <script> 
-    import CommentList from '../comments/CommentList'
+    import { onMounted } from 'vue' 
     import CommentCreate from '../comments/CommentCreate'
+    import CommentList from '../comments/CommentList'
+    import CustomButton from '../CustomButton'
     import Error from '../messages/Error'
     import Alert from '../messages/Alert'
-    import CustomButton from '../CustomButton'
-    import useComments from "../../composables/comments"
-    import { onMounted } from "vue" 
+    import useComments from '../../composables/comments'
 
     const { comments, getComments, loading, error500 } = useComments()
   

@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import { reactive } from "vue";  
+    import { reactive } from 'vue';  
     import CustomButton from '../CustomButton'
     import useComments from "../../composables/comments";
 

@@ -15,26 +15,26 @@
 </template>
 
 <script>
-export default {
-    name: 'CustomButton',
-    props: { 
-        type: {
-            type: String,
-            default: 'button',
-        },
-        color: {
-            type: String,
-            default: '',
-        },
-        onClick: {
-            type: Function,
-            required: true,
-        },
-        className: {
-            type: String,
-            default: '',
-        },
+    export default {
+        name: 'CustomButton',
+        props: { 
+            type: {
+                type: String,
+                default: 'button',
+            },
+            color: {
+                type: String,
+                default: '',
+            },
+            onClick: {
+                type: Function,
+                required: true,
+            },
+            className: {
+                type: String,
+                default: '',
+            },
 
-    }, 
-}
+        }, 
+    }
 </script>
