@@ -17,11 +17,7 @@
 <script>
 export default {
     name: 'CustomButton',
-    props: {
-        title: {
-            type: String,
-            required: true,
-        },
+    props: { 
         type: {
             type: String,
             default: 'button',
