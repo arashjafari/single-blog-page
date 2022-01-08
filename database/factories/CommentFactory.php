@@ -16,7 +16,7 @@ class CommentFactory extends Factory
     {
         return [
             'post_id' => $this->faker->numberBetween(1, 10),
-            'parent_id' => $this->faker->randomElement([null, Comment::all()->random()->id]),
+            'parent_id' => $this->faker->randomElement([null, Comment::inRandomOrder()->first()?->id]),
             'name' => $this->faker->name,
             'body' => $this->faker->sentence,
         ];

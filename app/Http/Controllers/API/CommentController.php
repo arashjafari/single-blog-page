@@ -13,13 +13,13 @@ class CommentController extends Controller
     public function index($postId, CommentRepository $repository)
     {
         return response()->json([
-            'comments' => $repository->index($postId)->toArray(),
+            'comments' => $repository->index($postId),
         ]);
     }
     
     public function store(CommentRequest $request, CommentRepository $repository)
     {
-        $repository->store($request);
+        $repository->store($request->validated());
         
         return response()->json(['message' => __('Comment created successfully!')], 201);
     }

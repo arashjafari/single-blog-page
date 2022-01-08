@@ -7,17 +7,18 @@ use App\Models\Comment;
 
 class CommentRepository
 {
-    public function index($postId)
+    public function index($postId): array
     {
         return Comment::wherePostId($postId)
                             ->whereNull('parent_id')
                             ->with('nestedChildren')
                             ->latest()
-                            ->get();
+                            ->get()
+                            ->toArray();
     }
 
-    public function store(CommentRequest $request)
+    public function store(array $data): void
     {
-        Comment::create($request->validated());
+        Comment::create($data);
     }
 }

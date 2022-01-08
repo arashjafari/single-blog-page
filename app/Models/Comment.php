@@ -17,11 +17,6 @@ class Comment extends Model
         'body',
     ];
 
-    public function post()
-    {
-        return $this->belongsTo(Post::class);
-    }
-
     public function parent()
     {
         return $this->belongsTo(Comment::class, 'parent_id');
