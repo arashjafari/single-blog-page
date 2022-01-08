@@ -7,7 +7,13 @@ use App\Models\Comment;
 
 class CommentRepository
 {
-    public function index($postId): array
+    /**
+     * Get all comments for a post sorted by latest.
+     *
+     * @param int $postId
+     * @return array
+     */
+    public function index(int $postId): array
     {
         return Comment::wherePostId($postId)
                             ->whereNull('parent_id')
@@ -17,6 +23,12 @@ class CommentRepository
                             ->toArray();
     }
 
+    /**
+     * Store a new comment.
+     *
+     * @param array $data
+     * @return void
+     */
     public function store(array $data): void
     {
         Comment::create($data);
