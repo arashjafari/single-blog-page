@@ -19504,6 +19504,7 @@ var _useComments = (0,_composables_comments__WEBPACK_IMPORTED_MODULE_3__["defaul
     reloadComments: function reloadComments() {
       getComments(1);
       this.clearReplyTo();
+      this.hideCreateComment();
     },
     showCreateComment: function showCreateComment() {
       this.clearReplyTo();

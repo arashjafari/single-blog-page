@@ -47,6 +47,7 @@
             reloadComments() { 
                 getComments(1)
                 this.clearReplyTo()
+                this.hideCreateComment()
             },
             showCreateComment() { 
                 this.clearReplyTo()
