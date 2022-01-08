@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-5 text-sm"  v-bind:class="{ 'pl-7' : (level > 1) }">
+    <div class="mt-5 text-sm"  v-bind:class="{ 'pl-4 md:pl-7' : (level > 1) }">
         <div v-bind:class="{ 'bg-slate-200 rounded-md p-4' : (level > 1) }">
             <div class="flex flex-row"> 
                 <img src="/img/profile.png" alt="profile" class="w-12 opacity-50"> 

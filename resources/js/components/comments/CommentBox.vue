@@ -1,10 +1,10 @@
 <template>
     
-    <div class="w-3/4 my-7 mx-auto "> 
-        <div class="px-24 py-6 text-justify"> 
+    <div class="w-full md:w-3/4 my-7 mx-auto "> 
+        <div class="px-6 md:px-24 py-6 text-justify"> 
             <p class="font-bold text-xl">Comments</p>
             <div>
-                <custom-button :onClick="showCreateComment" color="green" class="w-full m-3" >
+                <custom-button :onClick="showCreateComment" color="green" class="w-full m-0 my-3 md:m-3" >
                     Leave a comment
                 </custom-button>
             </div>
