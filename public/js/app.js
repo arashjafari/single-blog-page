@@ -19829,7 +19829,8 @@ var _hoisted_2 = {
   "class": "w-3/4 my-0 mx-auto"
 };
 var _hoisted_3 = {
-  key: 0
+  key: 0,
+  "class": "text-red-700 text-xs mb-2"
 };
 var _hoisted_4 = {
   "class": "flex flex-row gap-6 items-center"

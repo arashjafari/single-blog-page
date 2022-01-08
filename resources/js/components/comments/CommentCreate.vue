@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white py-6 px-24 fixed bottom-0 left-0 right-0 border-t border-gray-100">
         <div class="w-3/4 my-0 mx-auto">
-            <div v-if="errors">
+            <div v-if="errors" class="text-red-700 text-xs mb-2">
                 <div v-for="(v, k) in errors" :key="k" >
                     <p v-for="error in v" :key="error">
                     {{ error }}
