@@ -6,20 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
+use App\Repositories\CommentRepository;
 
 class CommentController extends Controller
 {
-    public function index($postId)
+    public function index($postId, CommentRepository $repository)
     {
         return response()->json([
-            'comments' => Comment::wherePostId($postId)->whereNull('parent_id')->with('nestedChildren')->latest()->get()->toArray(),
+            'comments' => $repository->index($postId)->toArray(),
         ]);
     }
     
-    public function store(CommentRequest $request)
+    public function store(CommentRequest $request, CommentRepository $repository)
     {
-        Comment::create($request->validated());
-
+        $repository->store($request);
+        
         return response()->json(['message' => 'Comment created successfully'], 201);
     }
 }
