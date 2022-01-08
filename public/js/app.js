@@ -19503,14 +19503,18 @@ var _useComments = (0,_composables_comments__WEBPACK_IMPORTED_MODULE_3__["defaul
     },
     reloadComments: function reloadComments() {
       getComments(1);
-      this.parentId = null;
-      this.replyTo = null;
+      this.clearReplyTo();
     },
     showCreateComment: function showCreateComment() {
+      this.clearReplyTo();
       this.activeCreateComment = true;
     },
     hideCreateComment: function hideCreateComment() {
       this.activeCreateComment = false;
+    },
+    clearReplyTo: function clearReplyTo() {
+      this.parentId = null;
+      this.replyTo = null;
     }
   },
   setup: function setup() {
@@ -19914,7 +19918,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.body]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_custom_button, {
-    onClick: _ctx.showCreateComment,
+    onClick: $setup.saveComment,
     color: "red",
     "class": "flex-none"
   }, {

@@ -33,7 +33,7 @@
                 <div class="flex flex-row items-end mt-2"> 
                     <textarea name="body" id="body" cols="30" rows="2" class="grow mr-5 p-3 border" v-model="form.body" placeholder="Please leave a comment" required></textarea> 
                     
-                    <custom-button :onClick="showCreateComment" color="red" class="flex-none" >
+                    <custom-button :onClick="saveComment" color="red" class="flex-none" >
                         Post comment
                     </custom-button>
                     

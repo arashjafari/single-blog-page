@@ -46,15 +46,19 @@
             },
             reloadComments() { 
                 getComments(1)
-                this.parentId = null
-                this.replyTo = null
+                this.clearReplyTo()
             },
-            showCreateComment() {
-                this.activeCreateComment = true
+            showCreateComment() { 
+                this.clearReplyTo()
+                this.activeCreateComment = true 
             },
             hideCreateComment() {
                 this.activeCreateComment = false
             }, 
+            clearReplyTo() {
+                this.parentId = null
+                this.replyTo = null
+            },
         },
         setup() { 
             onMounted(getComments(1)) // get comments for post 1
