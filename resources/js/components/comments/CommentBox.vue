@@ -12,6 +12,10 @@
             <div v-if="loading" class="flex items-center justify-center ">
                 <div class="w-8 h-8 border-b-2 border-gray-900 rounded-full animate-spin"></div>
             </div>
+
+            <div v-if="!loading && comments.length === 0" class="flex items-center justify-center">
+                <p class="text-gray-600 text-center">No comments yet</p>
+            </div>
              
             <comment-list  @replay="replay($event)" :comments="comments"></comment-list>
             <comment-create v-if="activeCreateComment" @hideCreateComment="hideCreateComment" :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="1"></comment-create>
