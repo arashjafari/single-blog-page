@@ -29,23 +29,8 @@
     </div>
 
     <div class="-mt-80 w-full h-60">
-        <div class="w-11/12 md:w-3/4 mx-auto my-0 shadow-xl">
-            <div class="h-40 md:h-52 relative bg-teal-600">
-
-                <h2 class="font-bold text-3xl leading-tight absolute ml-12 top-2/4 text-gray-800 uppercase">
-                    {{ $header ?? '' }}
-                </h2>
-            </div>
-
-            <div class="bg-white">
-                <div class="px-7 md:px-24 py-6 text-justify">
-                    {{ $content ?? '' }}
-                </div>
-            </div>
-        </div>
-
         <div id="app">
-            {{ $slot }}
+            <router-view />
         </div>
     </div>
 </body>

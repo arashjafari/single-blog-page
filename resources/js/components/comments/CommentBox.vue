@@ -23,7 +23,7 @@
             </div>
              
             <comment-list  @replay="replay($event)" :comments="comments"></comment-list>
-            <comment-create v-if="activeCreateComment" @hideCreateComment="hideCreateComment" :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="1"></comment-create>
+            <comment-create v-if="activeCreateComment" @hideCreateComment="hideCreateComment" :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="postId"></comment-create>
         </div>
     </div>
 
@@ -45,11 +45,17 @@
             CustomButton
         },
         name: 'PostIndex',
+        props: {
+            postId: {
+                type: Number,
+                required: true,
+            },
+        },
         data() {
             return { 
                 parentId: null,
                 replyTo: null,
-                activeCreateComment: false,
+                activeCreateComment: false, 
             }
         },
         methods: {
@@ -59,7 +65,7 @@
                 this.activeCreateComment = true
             },
             reloadComments() { 
-                getComments(1)
+                getComments(this.postId)
                 this.clearReplyTo()
                 this.hideCreateComment()
             },
@@ -75,8 +81,8 @@
                 this.replyTo = null
             },
         },
-        setup() { 
-            onMounted(getComments(1)) // get comments for post 1
+        setup(props) { 
+            onMounted(getComments(props.postId)) 
  
             return {
                 comments,
