@@ -13,6 +13,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <x-fav-icon />
 </head>
 
 <body class="bg-gray-100 font-serif">
