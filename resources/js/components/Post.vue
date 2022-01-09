@@ -2,9 +2,9 @@
   
   <div> 
       <div class="w-11/12 md:w-3/4 mx-auto my-0 shadow-xl">
-            <div class="h-40 md:h-52 relative bg-teal-600">
+            <div class="min-h-min md:h-52 relative bg-teal-600">
 
-                <h2 class="font-bold text-3xl leading-tight absolute ml-12 top-2/4 text-gray-800 uppercase">
+                <h2 class="font-bold text-2xl md:text-3xl leading-tight relative md:absolute pt-12 pb-7 md:pt-7 md:pb-0 mx-10 md:mx-12 top-2/4 text-gray-800 uppercase">
                     {{ title }}
                 </h2>
             </div>
