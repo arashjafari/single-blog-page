@@ -47,7 +47,7 @@
 
 <script>
     import { reactive } from 'vue';  
-    import CustomButton from '../CustomButton'
+    import CustomButton from '../CustomButton.vue'
     import useComments from "../../composables/comments";
 
     export default {

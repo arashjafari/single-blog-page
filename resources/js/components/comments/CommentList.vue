@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import CommentItem from './CommentItem';
+    import CommentItem from './CommentItem.vue';
     
     export default {
         components: {

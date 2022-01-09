@@ -31,12 +31,12 @@
 
 <script> 
     import { onMounted } from 'vue' 
-    import CommentCreate from '../comments/CommentCreate'
-    import CommentList from '../comments/CommentList'
-    import PreviewAnimation from '../comments/PreviewAnimation'
-    import CustomButton from '../CustomButton'
-    import Error from '../messages/Error'
-    import Alert from '../messages/Alert'
+    import CommentCreate from '../comments/CommentCreate.vue'
+    import CommentList from '../comments/CommentList.vue'
+    import PreviewAnimation from '../comments/PreviewAnimation.vue'
+    import CustomButton from '../CustomButton.vue'
+    import Error from '../messages/Error.vue'
+    import Alert from '../messages/Alert.vue'
     import useComments from '../../composables/comments'
 
     const { comments, getComments, loading, error500 } = useComments()
