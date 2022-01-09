@@ -23,7 +23,7 @@
             </div>    
  
             <comment-list  @replay="replay($event)" :comments="comments"></comment-list>
-            <comment-create v-if="activeCreateComment" @hideCreateComment="hideCreateComment" :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="postId"></comment-create>
+            <comment-create :class="{ 'scale-100': activeCreateComment, 'scale-0': !activeCreateComment }" @hideCreateComment="hideCreateComment" :parentId="parentId" :replyTo="replyTo" @reloadComments="reloadComments()" :postId="postId"></comment-create>
         </div>
     </div>
 
