@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <div class="-mt-80 w-full h-60">
+    <div class="-mt-40 md:-mt-80 w-full h-60">
         <div id="app">
             <router-view />
         </div>
