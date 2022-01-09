@@ -52,10 +52,15 @@
             CommentBox
         },
         name: 'PostIndex',
+        props: { 
+            title: {
+                type: String,
+                required: true,
+            },
+        },
         data() {
             return {
                 postId: 1, 
-                title: 'Awesome blog',
             }
         }, 
     }
